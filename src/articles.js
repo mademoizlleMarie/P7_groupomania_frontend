@@ -26,6 +26,37 @@ nouvel_article.addEventListener('click',function () {
     document.getElementById('bloc_nouvel_article').style.display = "block";
 });
 
+var enregistrer_nouvel_article = document.getElementById('boutton_envoi');
+enregistrer_nouvel_article.addEventListener('click',function () {
+    var form_data = new FormData();
+    form_data.append("article" ,
+        JSON.stringify({
+            "userId": sessionStorage.getItem("user_id"),
+            "titre": document.getElementById('titre').value,
+            "commentaire": document.getElementById('commentaire').value,
+         })
+    );
+    form_data.append(
+        "images", document.getElementById('photo').files[0]
+    );
+    Request.call({
+        status : 201,
+        method: 'POST',
+        url: API_URL,
+        headers : {
+            'Authorization': token
+        },
+        data: form_data
+    }).then((result) => {
+        let elts = document.getElementById('card');
+        elts.innerHTML = "";
+        request();
+    }).catch((result) => {
+      alert(result)
+    });
+});
+
+
 
 // affiche des teddies avec les informations
 function showArticle(Articles) {
