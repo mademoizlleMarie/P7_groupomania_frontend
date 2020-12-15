@@ -1,7 +1,8 @@
 import {API} from './config.js'
 import Request from './request.js'
 
-const API_URL = `${API._HOST + API._DIR }articles`;
+const API_URL_article = `${API._HOST + API._DIR }articles`;
+const API_URL_commentaire = `${API._HOST + API._DIR }commentaire`;
 
 const token =  sessionStorage.getItem('token');
 
@@ -11,14 +12,43 @@ function request() {
             'Content-Type': 'application/json',
             'Authorization': token
         },
-        url : API_URL,
+        url : API_URL_article,
         status : 200
     }).then((result)=>{
         showArticle(result);
+        commentaire();
+
     }).catch((result)=> {
 
     });
 }
+
+function commentaire() {
+    var enregisterCommentaire = document.getElementById('enregisterCommentaire');
+    enregisterCommentaire.addEventListener('click', function () {
+        const json = {
+            "Iduser": sessionStorage.getItem("user_id"),
+            "commentaire": document.getElementById('commentairetext').value,
+            "idArticle": document.getElementById('enregisterCommentaire').value,
+        };
+        console.log(json);
+        Request.call({
+            status: 201,
+            url: API_URL_commentaire ,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+            data: JSON.stringify(json)
+        }).then((result) => {
+            alert('Commentaire bien ajouté')
+        }).catch((result) => {
+            alert('Veuillez recommencer')
+        });
+    });
+}
+
 request();
 
 var nouvel_article = document.getElementById('nouvel_article');
@@ -42,12 +72,13 @@ enregistrer_nouvel_article.addEventListener('click',function () {
     Request.call({
         status : 201,
         method: 'POST',
-        url: API_URL,
+        url: API_URL_article,
         headers : {
             'Authorization': token
         },
         data: form_data
     }).then((result) => {
+        document.getElementById('bloc_nouvel_article').style.display = "none";
         let elts = document.getElementById('card');
         elts.innerHTML = "";
         request();
@@ -55,8 +86,6 @@ enregistrer_nouvel_article.addEventListener('click',function () {
       alert(result)
     });
 });
-
-
 
 // affiche des teddies avec les informations
 function showArticle(Articles) {
@@ -99,18 +128,19 @@ function showArticle(Articles) {
         ajoutCommentaire.setAttribute("class", "ajoutCommentaire");
 
         var textCommentaire = document.createElement("textarea");
-        textCommentaire.setAttribute("id", "commentaire");
+        textCommentaire.setAttribute("id", "commentairetext");
         textCommentaire.setAttribute("rows", "2");
         textCommentaire.setAttribute("cols", "50");
         textCommentaire.setAttribute("placeholder", "ajouter un commentaire");
-        textDescription.innerHTML = article.corps_article;
         ajoutCommentaire.append(textCommentaire)
 
-        var enregisterCommentaire = document.createElement("a");
-        enregisterCommentaire.setAttribute("class", "btn ");
-        enregisterCommentaire.setAttribute("id", "enregisterCommentaire");
-        enregisterCommentaire.innerHTML = "Ajouter";
-        ajoutCommentaire.append(enregisterCommentaire);
+        var enregisterCommentaireArticle = document.createElement("button");
+        enregisterCommentaireArticle.setAttribute("class", "btn");
+        enregisterCommentaireArticle.setAttribute("type", "submit");
+        enregisterCommentaireArticle.setAttribute("id", "enregisterCommentaire");
+        enregisterCommentaireArticle.innerHTML = "Ajouter";
+        enregisterCommentaireArticle.value = article.id_article;
+        ajoutCommentaire.append(enregisterCommentaireArticle);
         cardBody.append(ajoutCommentaire);
 
         card.append(img);

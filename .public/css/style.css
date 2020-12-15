@@ -9944,8 +9944,6 @@ h3 {
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
   cursor: pointer;
 }
 .connexion .login-page .form button:hover, .connexion .login-page .form button:active, .connexion .login-page .form button:focus {
@@ -10004,6 +10002,12 @@ article #card .card .card-body .card-contenu {
   border-right: #e57373 1px solid;
   margin-bottom: 20px;
   border-radius: 6px;
+}
+article #card .card .card-body .card-contenu .card-title {
+  background-color: rgba(0, 0, 0, 0.125);
+  box-shadow: 2px 2px 5px 3px #ffccc9;
+  border-radius: 5px 10px;
+  padding: 5px;
 }
 article #card .card .ajoutCommentaire {
   display: flex;
