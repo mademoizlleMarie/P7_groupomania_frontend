@@ -98,11 +98,25 @@ article{
   align-items: center;
   .card {
     margin-top: 60px;
+    .auteur{
+      padding: 10px 0 0 30px;
+    }
+    .modifSupp{
+      .btn{
+        background: #e57373;
+        opacity: 0.8;
+        height: 40px;
+        margin: 5px;
+      }
+      .btn:hover{
+        opacity: 1;
+      }
+    }
     img {
       height: 300px;
       margin-inline: auto;
       width: auto;
-      margin-top: 20px;
+      margin-top: 5px;
       margin-bottom: 5px;
 
     }
@@ -117,10 +131,10 @@ article{
      margin-bottom: 20px;
      border-radius: 6px;
      .card-title{
-       background-color: rgba(0, 0, 0, 0.125);
-       box-shadow: 2px 2px 5px 3px #ffccc9;
-       border-radius: 5px 10px;
-       padding:5px;
+       font-weight: bold;
+     }
+     .card-text{
+       padding-left: 20px;
      }
    }
  }
@@ -148,8 +162,6 @@ article{
 }
 }
 
-
-
 body {
   background: #ecf0f3; /* fallback for old browsers */
   font-family: "Roboto", sans-serif;
@@ -170,8 +182,6 @@ body {
         border: 1px solid #e57373;
         padding: 10px;
         border-radius: 10px;
-
-
         .validation{
           display: flex;
           justify-content: flex-end;
@@ -190,4 +200,106 @@ body {
     }
   }
 }
+#bloc_modification_article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-row {
+    border: 1px solid #e57373;
+    padding: 10px;
+    border-radius: 10px;
+    width: 800px;
+    margin: auto;
+    margin-top: 10px;
+
+    .form-group {
+      display: flex;
+      justify-content: center;
+
+      label {
+        margin: 5px;
+        align-self: center;
+      }
+    }
+
+    .img {
+      flex-direction: column;
+      align-items: center;
+
+      .card-img-top {
+        width: 450px;
+      }
+
+    }
+
+    input {
+      margin-left: 10px;
+    }
+
+    .button {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      .btn {
+        background: #e57373;
+        opacity: 0.8;
+        height: 40px;
+        margin: 5px;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+#Profil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-row {
+    border: 1px solid #e57373;
+    padding: 10px;
+    border-radius: 10px;
+    width: 450px;
+    margin: auto;
+    margin-top: 10px;
+
+    .form-group {
+      display: flex;
+      justify-content: space-between;
+
+      label {
+        margin: 5px;
+        align-self: center;
+      }
+    }
+
+    input {
+      margin-left: 10px;
+    }
+
+    .button {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      .btn {
+        background: #e57373;
+        opacity: 0.8;
+        height: 40px;
+        margin: 5px;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
 
