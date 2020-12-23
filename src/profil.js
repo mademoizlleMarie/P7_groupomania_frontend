@@ -93,8 +93,8 @@ function showprofil(profils) {
         inputlastName.setAttribute("type", "text");
         inputlastName.setAttribute("name", "nom");
         inputlastName.setAttribute("size", "30");
-        inputlastName.setAttribute("id", "lastName");
-        inputlastName.setAttribute("value", profil.lastName);
+        inputlastName.setAttribute("id", "firstName");
+        inputlastName.setAttribute("value", profil.firstName);
         postNom.append(inputlastName);
 
         var postPrenom = document.createElement("div");
@@ -109,8 +109,8 @@ function showprofil(profils) {
         inputfirstName.setAttribute("type", "text");
         inputfirstName.setAttribute("name", "prenom");
         inputfirstName.setAttribute("size", "30");
-        inputfirstName.setAttribute("id", "firstName");
-        inputfirstName.setAttribute("value", profil.firstName);
+        inputfirstName.setAttribute("id", "lastName");
+        inputfirstName.setAttribute("value", profil.lastName);
         postPrenom.append(inputfirstName);
 
         var button = document.createElement("div");
