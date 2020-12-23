@@ -8,7 +8,7 @@ export default class Request{
            data : null
        };
       options = Object.assign(defaultOptions,options);
-      return new Promise((resolve, reject) => {
+     return new Promise((resolve, reject) => {
            var request = new XMLHttpRequest();
            request.onreadystatechange = function () {
                if (this.readyState == XMLHttpRequest.DONE && this.status == options.status) {

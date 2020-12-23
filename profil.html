@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script type="module" src="src/request.js"></script>
+    <script type="module" src="src/profil.js"></script>
 
     <!--  <link rel="stylesheet" href="sass/main.scss" />-->
    <link rel="stylesheet" href=".public/css/style.css" />
-    <title>Groupomania</title>
+    <title>Groupomania - Profil</title>
 
 </head>
 <body>
@@ -27,13 +28,10 @@
                             <a class="nav-link" href="articles.html">Accueil</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" type="submit" id="nouvel_article">Nouvel Article</a>
+                            <a class="nav-link" href="profil.html" id="afficherProfil">Votre Profil</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="profil.html" type="submit" id="afficherProfil">Votre Profil  </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" type="submit" id="deconnexion">Deconnexion</a>
+                            <a class="nav-link" href="index.html" id="deconnexion">Deconnexion</a>
                         </li>
                     </ul>
                 </div>
@@ -42,46 +40,15 @@
     </div>
 </div>
 
-<div id="bloc_nouvel_article" class="container">
-    <article>
-        <h3>Nouvel article</h3>
-        <div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="titre" >Titre</label>
-                    <input type="text" name="titre" id="titre">
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="commentaire">Article</label>
-                    <textarea type="text" name="commentaire" id="commentaire" cols="60" rows="4"></textarea>
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="photo">Choisir un fichier:</label>
-                    <input type="file"
-                           id="photo" name="images"
-                           accept="image/png, image/jpeg">
-                </div>
-                <div class="validation">
-                    <a href="index.html" class="btn btn-sm font-weight-bold">Annuler</a>
-                    <button type="submit" class="btn btn-sm font-weight-bold " id="boutton_envoi">Valider</button>
-                </div>
-            </div>
-        </div>
-    </article>
-</div>
 
-<article class="container">
-    <div id="card">
-    </div>
-    <div id="bloc_modification_article">
-    </div>
-</article>
+<div id="Profil">
+
+</div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script type="module" src="src/articles.js"></script>
 </body>
 </html>
 
