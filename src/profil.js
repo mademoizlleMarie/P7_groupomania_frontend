@@ -10,7 +10,6 @@ function profil() {
     const json = {
         "id_user": sessionStorage.getItem("user_id"),
     };
-    console.log(json);
     Request.call({
         headers: {
             'Content-Type': 'application/json',
@@ -21,39 +20,55 @@ function profil() {
         method: 'POST',
         data: JSON.stringify(json)
     }).then((response) => {
-        console.log(response);
         showprofil(response);
-        enregistrerProfil();
+        buttonSuppValid();
     }).catch((result) => {
     });
 }
 
-function enregistrerProfil() {
+function buttonSuppValid() {
     var enregistrerProfil = document.getElementById('boutton_validation_modification');
-    if (enregistrerProfil) {
-        enregistrerProfil.addEventListener('click', function () {
-            const json = {
-                "id_user": userid,
-                "email": document.getElementById('email').value,
-                "firstName": document.getElementById('firstName').value,
-                "lastName": document.getElementById('lastName').value
-            };
-            console.log(json)
-            Request.call({
-                status: 200,
-                method: 'POST',
-                url: API_URL + '/updateProfil',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify(json)
-            }).then((result) => {
-                alert('Votre profil est bien été mis à jour')
-            }).catch((result) => {
-                alert('Merci de recommencer')
-            });
+    enregistrerProfil.addEventListener('click', function () {
+        const json = {
+            "id_user": userid,
+            "email": document.getElementById('email').value,
+            "firstName": document.getElementById('firstName').value,
+            "lastName": document.getElementById('lastName').value
+        };
+        Request.call({
+            status: 200,
+            method: 'PUT',
+            url: API_URL + '/updateProfil',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(json)
+        }).then((result) => {
+            alert('Votre profil est bien été mis à jour')
+        }).catch((result) => {
+            alert('Merci de recommencer')
         });
-    }
+    });
+
+    var boutton_suppression = document.getElementById('boutton_suppression');
+    boutton_suppression.addEventListener('click', function () {
+        const json = {
+            "id_user": userid,
+        };
+        Request.call({
+            status: 200,
+            method: 'PUT',
+            url: API_URL + '/deleteProfil',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(json)
+        }).then((result) => {
+            window.location = "index.html";
+        }).catch((result) => {
+            alert('Merci de recommencer')
+        });
+    });
 }
 
 profil();
@@ -126,6 +141,11 @@ function showprofil(profils) {
         validation.setAttribute("class", "btn btn-sm font-weight-bold");
         validation.innerHTML = "Modifier";
         button.append(validation);
+        var suppression = document.createElement("button");
+        suppression.setAttribute("id", "boutton_suppression");
+        suppression.setAttribute("class", "btn btn-sm font-weight-bold");
+        suppression.innerHTML = "suppression";
+        button.append(suppression);
 
         DivProfil.append(email);
         DivProfil.append(postNom);
