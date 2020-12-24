@@ -19,8 +19,6 @@ function allArticle() {
         url : API_URL_article,
         status : 200
     }).then((result)=>{
-        console.log(result)
-        console.log(result.result)
         showArticle(result.result);
         enregistrerNewCommentaire();
     }).catch((result)=> {
@@ -68,10 +66,10 @@ window.onload = function() {
     // suppression d'un article
     if (id !== null && choix ==="delete") {
         const json = {
-            "Iduser": sessionStorage.getItem("user_id"),
+            "userId": sessionStorage.getItem("user_id"),
+            "profil": sessionStorage.getItem("profil"),
             "IdArticle": id
         };
-        console.log(json);
         Request.call({
             status: 400,
             url: API_URL_article + '/:id',
@@ -82,7 +80,6 @@ window.onload = function() {
             },
             data: JSON.stringify(json)
         }).then((result) => {
-            console.log(result)
             window.location = "articles.html"
         }).catch((result) => {
             alert('Veuillez r€comm€nc€r')
@@ -110,6 +107,7 @@ window.onload = function() {
                 form_data.append("article",
                     JSON.stringify({
                         "userId": sessionStorage.getItem("user_id"),
+                        "profil": sessionStorage.getItem("profil"),
                         "IdArticle": id,
                         "titre": document.getElementById('titreModifie').value,
                         "commentaire": document.getElementById('commentaireModifie').value,
@@ -194,7 +192,7 @@ function showArticle(Articles) {
         auteurArticle.append(auteur);
         row.append(auteurArticle);
 
-if(article.id_user == sessionStorage.getItem("user_id")) {
+if(article.id_user == sessionStorage.getItem("user_id") || sessionStorage.getItem("profil") === 'admin') {
     var modifsupp = document.createElement("div");
     modifsupp.setAttribute("class", "modifSupp col-lg-4");
 
